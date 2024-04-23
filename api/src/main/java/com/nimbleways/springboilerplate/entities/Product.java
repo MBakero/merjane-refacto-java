@@ -1,5 +1,6 @@
 package com.nimbleways.springboilerplate.entities;
 
+import com.nimbleways.springboilerplate.enums.ProductType;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -25,17 +26,38 @@ public class Product {
     private Integer available;
 
     @Column(name = "type")
-    private String type;
+    private ProductType type;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "expiry_date")
-    private LocalDate expiryDate;
+    @Column(name = "selling_start_date")
+    private LocalDate sellingStartDate;
 
-    @Column(name = "season_start_date")
-    private LocalDate seasonStartDate;
+    @Column(name = "selling_end_date")
+    private LocalDate sellingEndDate;
 
-    @Column(name = "season_end_date")
-    private LocalDate seasonEndDate;
+    @Column(name = "max_to_sell")
+    private Integer maxToSell;
+
+
+    public LocalDate getPeriodEndDate() {
+        return this.sellingEndDate;
+    }
+
+    public LocalDate getPeriodStartDate() {
+        return this.sellingStartDate;
+    }
+
+    public LocalDate getSeasonEndDate() {
+        return this.sellingEndDate;
+    }
+
+    public LocalDate getSeasonStartDate() {
+        return this.sellingStartDate;
+    }
+
+    public LocalDate getExpiryDate() {
+        return this.sellingEndDate;
+    }
 }
